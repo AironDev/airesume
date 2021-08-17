@@ -5,7 +5,7 @@
 -->
 <html>
 	<head>
-		<title>Aaron</title>
+		<title>Aniebiet Aaron</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -23,8 +23,8 @@
 						<figcaption class="figure-caption"></figcaption>
 					</figure>
 					<h1 style="font-size: 2em">Aniebiet Aaron</h1>
-					<p> Software Developer</p>
-					<span class="tagline">Physics/Computer Science Undergraduate | Backend Developer <span class="stati accent"> [ </span> Laravel, ExpressJS, AdonisJS, Golang <span class="stati accent"> ] </span> | HNG Internship Finalist</span>
+					<p> Backend Developer</p>
+					<span class="tagline"><span class="stati accent"> [ </span> Laravel, ExpressJS, AdonisJS, Golang <span class="stati accent"> ] </span> | HNGi8 Intern</span>
 					<br>
 					<div class="social-buttons">
 						<a href="https://twitter.com/airon_dev" class="social-buttons__button social-button social-button--codepen" aria-label="CodePen">
@@ -99,7 +99,7 @@
 							<li>
 								<span class="icon solid major fa-pencil-alt"></span>
 								<h3 class="stati wheat">Javascript</h3>
-								<span>Express, Adonis & Vue JS</span>
+								<span>Nodejs, Express & Vue/Nuxt JS</span>
 							</li>
 							<li>
 								<span class="icon solid major fa-code"></span>
@@ -314,27 +314,21 @@
 				</div>
 			</section>
 
-		<!-- Four -->
-		
-			<section id="four" class="main">
+
+		<!-- five -->
+			<section id="four" style="" class="main">
 				<div class="container">
 					<div class="content">
 						<header class="major">
-							<h2 class="stati accent">Gallery</h2>
+							<h2 class="stati accent">Trainings</h2>
 						</header>
 						<section>
 							<div class="box alt">
 								<div class="row gtr-uniform gtr-50">
-									<div class="col-12"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic08.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic12.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic09.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic13.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic10.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic11.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic07.png" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/pic06.png" alt="" /></span></div>
+									<div class="col-6"><a href="https://hng.tech/" class="image fit"><img src="images/hngi.jpeg" alt="" /></a></div>
+									<div class="col-6"><a href="https://ingressive.org/" class="image fit"><img src="images/i4glogo.png"></a></div>
+									<div class="col-6"><a href="https://internship.zuri.team/" class="image fit"><img  src="images/zur.jpg" alt="" /></a></div>
+									<div class="col-6"><a href="https://trainings.zuri.team/" class="image fit"><img src="images/zuri.jpeg" alt="" /></a></div>
 								</div>
 							</div>
 						</section>
@@ -351,7 +345,7 @@
 					<header class="major">
 						<h2 class="stati accent">Get in touch</h2>
 					</header>
-					<form method="post" action="https://formspree.io/f/xdopdayy">
+					<form method="post" id="contact-form" action="https://formspree.io/f/xdopdayy">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
 							<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
@@ -360,6 +354,9 @@
 								<ul class="actions special">
 									<li><input type="submit" value="Send Message" class="primary" /></li>
 								</ul>
+							</div>
+							<div class="col-12">
+								<p style="color: green" id="feedback" class="text-success"></p>
 							</div>
 						</div>
 					</form>
@@ -382,11 +379,52 @@
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/skills.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script type="text/javascript">
+				
+
+
+				$(document).ready(function(){
+					$( "#contact-form" ).submit(function( event ) {
+					  	event.preventDefault();
+					  	var form = $(this);
+					    var url = form.attr('action');
+					    
+					    $.ajax({
+				           type: "POST",
+				           url: url,
+				           data: form.serialize(), // serializes the form's elements.
+				           success: function(data)
+				           {
+					            // reset the form
+					           	form.trigger("reset")
+					           	$('#feedback').text('Message sent successfully')
+					           	setTimeout(function(){
+					           		$('#feedback').text('')
+					           	}, 3000)
+				           },
+				           error: function(data){
+					           	// reset the form
+					           	form.trigger("reset")
+					           	$('#feedback').text('Message has been sent successfully')
+					           	setTimeout(function(){
+					           		$('#feedback').text('')
+					           	}, 3000)
+				           },
+				           always: function(){
+				           	alert('sdf')
+				           }
+					  	});
+
+
+					});
+				})
+			</script>
 
 	</body>
 </html>
